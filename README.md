@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Review & Supervision
+
+Become the editor-in-chief of AI-generated content with per-paragraph review controls and real-time editorial analytics.
+
+## Concept
+
+Most AI writing tools give you a single output to take or leave. Review & Supervision breaks AI-generated content into individual paragraphs, each of which you can accept, edit, reject, or send back with revision instructions. As you review, the app tracks your decisions and builds an editorial fingerprint that reveals your supervision style.
+
+![Demo](screenshot.png)
+
+## Editorial Controls
+
+Each paragraph presents four actions:
+
+- **Accept** (green) — approve the paragraph as-is
+- **Edit** (amber) — manually rewrite or tweak the text yourself
+- **Reject** (red) — discard the paragraph entirely and regenerate it from scratch
+- **Revise** (blue) — send natural-language instructions back to the AI (e.g. "make shorter", "add statistics", "more formal tone")
+
+## Editor Styles
+
+Based on your review patterns, the dashboard classifies your editorial personality:
+
+- **Perfectionist** — you refine every detail by hand
+- **Trusting** — you trust the AI's judgment
+- **Harsh Critic** — nothing gets past your standards
+- **Collaborative** — you guide the AI to do better
 
 ## Getting Started
 
-First, run the development server:
+```bash
+git clone <repo-url>
+cd primitive-review-supervision
+npm install
+```
+
+Create a `.env.local` file:
+
+```
+ANTHROPIC_API_KEY=your-api-key-here
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Enter a topic and click **Generate** — Claude writes a 6-paragraph blog post
+2. Review each paragraph using the editorial controls
+3. The sidebar dashboard tracks your decisions in real time: word count deltas, edit distance, change rate, time spent, and decision distribution
+4. When all paragraphs are reviewed, check your editorial fingerprint to see your supervision style
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js** — app router with API routes
+- **Tailwind CSS** — styling
+- **Claude API** — content generation and revision
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Part of
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is one of 7 demos for **New Interaction Primitives for GenAI**.
